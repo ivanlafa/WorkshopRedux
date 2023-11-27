@@ -16,6 +16,13 @@ export class AppComponent {
   constructor(private store: Store<AppState>) {}
 
   addPerson(person: Person) {
+    if ( !person.id ||!person.name || !person.age || !person.email || !person.phone) {
+      // console.error('Todos los campos son obligatorios.');
+      alert('Todos los campos son obligatorios.')
+      return;
+    }
+
+
     this.store.dispatch(PersonActions.addPerson({ person }));
   }
 
